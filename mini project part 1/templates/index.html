@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medical Image Compression</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #f5f7ff 0%, #ffffff 100%);
+        }
+        
+        .option-card {
+            transition: all 0.3s ease;
+            border: 1px solid rgba(226, 232, 240, 0.8);
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+        }
+        
+        .option-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.05);
+            border-color: rgba(99, 102, 241, 0.3);
+        }
+        
+        .glow {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, rgba(99, 102, 241, 0) 70%);
+            border-radius: 50%;
+            z-index: -1;
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+    <div class="glow top-0 left-0"></div>
+    <div class="glow bottom-0 right-0"></div>
+    
+    <div class="container mx-auto px-4 py-12 max-w-6xl relative z-10">
+        <div class="text-center mb-16">
+            <h1 class="text-4xl md:text-5xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-purple-600">
+                Medical Image Compression
+            </h1>
+        </div>
+        
+        <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            <!-- Compress Image Card -->
+            <a href="{{ url_for('compress') }}" class="block">
+                <div class="option-card rounded-2xl p-8 h-full flex flex-col items-center justify-center text-center">
+                    <div class="w-16 h-16 mb-6 rounded-full bg-indigo-100 flex items-center justify-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-indigo-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </div>
+                    <h2 class="text-2xl font-semibold mb-3 text-gray-800">Compress Image</h2>
+                    <p class="text-gray-600 mb-6">Upload and compress medical images using RLE or Huffman coding algorithms</p>
+                    <button class="px-6 py-3 bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-full font-medium shadow-lg shadow-indigo-200 hover:shadow-xl hover:shadow-indigo-300 transition-all">
+                        Start Compression
+                    </button>
+                </div>
+            </a>
+
+            <!-- Decompress Image Card -->
+            <a href="{{ url_for('decompress') }}" class="block">
+                <div class="option-card rounded-2xl p-8 h-full flex flex-col items-center justify-center text-center">
+                    <div class="w-16 h-16 mb-6 rounded-full bg-purple-100 flex items-center justify-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-purple-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7" />
+                        </svg>
+                    </div>
+                    <h2 class="text-2xl font-semibold mb-3 text-gray-800">Decompress Image</h2>
+                    <p class="text-gray-600 mb-6">Restore your compressed medical images to their original format</p>
+                    <button class="px-6 py-3 bg-gradient-to-r from-purple-600 to-indigo-600 text-white rounded-full font-medium shadow-lg shadow-purple-200 hover:shadow-xl hover:shadow-purple-300 transition-all">
+                        Start Decompression
+                    </button>
+                </div>
+            </a>
+        </div>
+
+        <!-- Informative Card Section -->
+        <div class="mt-16 max-w-xl mx-auto option-card rounded-xl p-6 shadow-lg text-center bg-white backdrop-filter backdrop-blur-lg border border-gray-200">
+            <h2 class="text-xl font-semibold text-gray-800 mb-4">About This Project</h2>
+            <p class="text-gray-600 mb-4">This application enables efficient compression and decompression of medical images using advanced algorithms like Run-Length Encoding (RLE), Huffman Coding, and Discrete Cosine Transform (DCT). These methods ensure reduced storage requirements while maintaining image quality.</p>
+            <p class="text-gray-500 italic">Created by Swaraj Nandkishor Mahadik (122B1B159)</p>
+        </div>
+
+        <!-- Footer -->
+        <div class="mt-20 text-center text-sm text-gray-500">
+            <p>Advanced medical image compression technology</p>
+        </div>
+    </div>
+</body>
+</html>

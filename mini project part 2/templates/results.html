@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Analysis Results</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; background-color: #f4f4f9; }
+        .container { max-width: 1200px; margin: auto; padding: 20px; background: white; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); }
+        h1 { text-align: center; color: #333; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 15px; margin-top: 20px; }
+        .frame { border: 1px solid #ddd; border-radius: 5px; padding: 10px; text-align: center; }
+        .frame img { width: 100%; height: auto; object-fit: cover; border-radius: 3px; }
+        .plot-container { text-align: center; margin-top: 30px;}
+        .plot-container img { max-width: 100%; height:auto;}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Analysis Results</h1>
+
+        <!-- Plot of Frame Differences -->
+        {% if plot %}
+        <div class="plot-container">
+            <h2>Frame Difference Analysis</h2>
+            <img src="{{ url_for('static', filename=plot) }}" alt="Difference Plot">
+        </div>
+        {% endif %}
+
+        <!-- Display Detected Scene Changes -->
+        {% if changes %}
+        <h2>Detected Scene Changes</h2>
+        <div class="grid">
+            {% for change in changes %}
+            <div class="frame">
+                <img src="{{ url_for('static', filename=change.image) }}" alt="Frame {{ change.frame }}">
+                <p>Frame {{ change.frame }}
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}
+        <p>No significant frame changes detected.</p>
+        {% endif %}
+    </div>
+</body>
+</html>
